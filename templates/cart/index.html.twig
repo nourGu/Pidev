@@ -1,0 +1,57 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Votre panier{% endblock %}
+
+{% block body %}
+ <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+    <section class="bg-light p-3">
+        <h1>Votre panier</h1>
+    </section>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for element in dataPanier %}
+                <tr>
+                    <td>{{ element.produit.title }}</td>
+                    <td class="text-end">{{ element.produit.price }} €</td>
+                    <td>{{ element.quantite }}</td>
+                    <td class="text-end">{{ element.quantite * element.produit.price }} €</td>
+                    
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" class="text-center">Votre panier est vide</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Total</td>
+                <td class="text-end">{{ total }} €</td>
+                
+            </tr>
+        </tfoot>
+    </table>
+     <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            
+                        </div>
+                    </div>
+                </footer>
+            </div>
+{% endblock %}

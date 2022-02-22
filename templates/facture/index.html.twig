@@ -1,0 +1,60 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Facture {% endblock %}
+
+{% block body %}
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+    <h1>facture</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomP</th>
+                <th>Quantite</th>
+                <th>Prix</th>
+                <th>PrixTotal</th>
+                <th>MethodePayement</th>
+                 <th>Telephone</th>
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for facture in factures %}
+            <tr>
+                <td>{{ facture.id }}</td>
+                <td>{{ facture.nomP }}</td>
+                <td>{{ facture.quantite }}</td>
+                <td>{{ facture.prix }}</td>
+                <td>{{ facture.prixTotal }}</td>
+                <td>{{ facture.MethodePayement }}</td>
+                <td>{{ facture.Telephone }}</td>
+                <td>
+                    <a href="{{ path('facture_show', {'id': facture.id}) }}">show</a>
+                    <a href="{{ path('facture_edit', {'id': facture.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('facture_new') }}">Create new</a>
+    <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            
+                        </div>
+                    </div>
+                </footer>
+            </div>
+{% endblock %}

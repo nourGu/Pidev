@@ -1,0 +1,27 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}New Products{% endblock %}
+
+{% block body %}
+div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+          <section class="bg-light p-3">   
+
+    <h1>Create new Products</h1>
+
+    {{ include('products/_form.html.twig') }}
+
+    <a href="{{ path('products_index') }}">back to list</a>
+    <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            
+                        </div>
+                    </div>
+                </footer>
+            </div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Facture{% endblock %}
+
+{% block body %}
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+    <h1>Facture</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ facture.id }}</td>
+            </tr>
+            <tr>
+                <th>NomP</th>
+                <td>{{ facture.nomP }}</td>
+            </tr>
+            <tr>
+                <th>Quantite</th>
+                <td>{{ facture.quantite }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ facture.prix }}</td>
+            </tr>
+            <tr>
+                <th>PrixTotal</th>
+                <td>{{ facture.prixTotal }}</td>
+            </tr>
+            <tr>
+                <th>MethodePayement</th>
+                <td>{{ facture.MethodePayement }}</td>
+            </tr>
+             <tr>
+                <th>Telephone</th>
+                <td>{{ facture.telephone }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('facture_index') }}">back to list</a>
+
+    <a href="{{ path('facture_edit', {'id': facture.id}) }}">edit</a>
+
+    {{ include('facture/_delete_form.html.twig') }}
+    <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            
+                        </div>
+                    </div>
+                </footer>
+            </div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Commandes {% endblock %}
+
+{% block body %}
+    <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Commandes
+                            </div>
+                            <a href="{{ path('commandes_new') }}">Create new</a>
+                            <div class="card-body">
+                                <table class="table" border="1">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Idcommande</th>
+                                            <th>Adresse</th>
+                                            <th>Codepostal</th>
+                                            <th>Telephone</th>
+                                            <th>Email</th>
+                                            <th>Nom</th>
+                                            <th>Prenom</th>
+                                            <th>Nomproduit</th>
+                                            <th>Quantite</th>
+                                            <th>Prix</th>
+                                            <th>actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for commande in commandes %}
+                                        <tr>
+                                            <td>{{ commande.id }}</td>
+                                            <td>{{ commande.idcommande }}</td>
+                                            <td>{{ commande.adresse }}</td>
+                                            <td>{{ commande.codepostal }}</td>
+                                            <td>{{ commande.telephone }}</td>
+                                            <td>{{ commande.email }}</td>
+                                            <td>{{ commande.nom }}</td>
+                                            <td>{{ commande.prenom }}</td>
+                                            <td>{{ commande.nomproduit }}</td>
+                                            <td>{{ commande.quantite }}</td>
+                                            <td>{{ commande.prix }}</td>
+                                            <td>
+                                                <a href="{{ path('commandes_show', {'id': commande.id}) }}">show</a>
+                                                <a href="{{ path('commandes_edit', {'id': commande.id}) }}">edit</a>
+                                              
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="12">no records found</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+   {% endblock %}

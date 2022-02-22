@@ -1,0 +1,27 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Edit Facture{% endblock %}
+
+{% block body %}
+<div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+    <h1>Edit Facture</h1>
+
+    {{ include('facture/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('facture_index') }}">back to list</a>
+
+    {{ include('facture/_delete_form.html.twig') }}
+    <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            
+                        </div>
+                    </div>
+                </footer>
+            </div>
+{% endblock %}
