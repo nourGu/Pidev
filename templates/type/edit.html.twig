@@ -1,0 +1,25 @@
+{% extends 'back.html.twig' %}
+{% block title %}Edit type terrrain{% endblock %}
+{% block navlink%}
+    Gestion
+{% endblock %}
+{% block navItem%}
+    <a href="{{ path('terrain_index') }}">gestion des terrains</a>
+    <a href="{{ path('type_index') }}">gestion des types</a>
+{% endblock %}
+
+{% block row %}
+{% endblock %}
+
+ {% block charts %}
+ {% endblock %}
+
+{% block table %}
+    <h1>Edit Terrain</h1>
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+    {{ include('type/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('type/_delete_form.html.twig') }}
+
+    <a href="{{ path('type_index') }}">back to list</a>
+{% endblock %}

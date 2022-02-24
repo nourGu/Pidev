@@ -1,0 +1,37 @@
+{% extends 'back.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}New Terrain{% endblock %}
+{% block navlink%}
+    Gestion
+{% endblock %}
+{% block navItem%}
+    <a href="{{ path('terrain_index') }}">gestion des terrains</a>
+    <a href="{{ path('type_index') }}">gestion des types</a>
+{% endblock %}
+
+{% block table %}
+{% endblock %}
+{% block cardDel %}
+{% endblock %}
+
+ {% block charts %}
+ {% endblock %}
+
+{% block data %}
+    Table Terrain
+{% endblock %}
+
+{% block row %}
+{% endblock %}
+
+{% block table %}
+    <h1>Create new Terrain</h1>
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+    {{ include('terrain/_form.html.twig') }}
+{% block href %}
+    <a href="{{ path('terrain_index') }}">back to list</a>
+{% endblock %}
+
+{% endblock %}

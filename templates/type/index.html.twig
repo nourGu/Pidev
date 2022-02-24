@@ -1,0 +1,57 @@
+{% extends 'back.html.twig' %}
+
+
+{% block title %}Types{% endblock %}
+{% block navlink%}
+    Gestion
+{% endblock %}
+{% block navItem%}
+    <a href="{{ path('terrain_index') }}">gestion des terrains</a>
+    <a href="{{ path('type_index') }}">gestion des types</a>
+{% endblock %}
+
+{% block tableData %}
+{% endblock %}
+ {% block charts %}
+ {% endblock %}
+
+ {% block table %}
+ {% endblock %}
+
+
+{% block title2 %}
+    gestion des types de terrains
+{% endblock %}
+ {% block cardDel %}
+ {% endblock %}
+{% block row %}
+    <h3>Les types de terrains </h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>LibelleType</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type in types %}
+            <tr>
+                <td>{{ type.libelleType }}</td>
+                <td>
+                    <a href="{{ path('type_show', {'id': type.id}) }}">show</a>
+                    <a href="{{ path('type_edit', {'id': type.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% block href %}
+    <a href="{{ path('type_new') }}">Create new</a>
+{% endblock %}
+{% endblock %}
