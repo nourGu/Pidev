@@ -1,0 +1,47 @@
+{% extends 'Reserve.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+
+{% block title %}Reservation{% endblock %}
+ {% block stylesheets %}
+     <style>
+     #calendrier{
+     width: 500%;
+     margin: 10px
+     }
+     </style>
+ {% endblock %}
+
+
+{% block Calender  %}
+    <div class="col-lg-7" id="calendrier">
+    </div>
+{% endblock %}
+{% block formulaire %}
+
+    <div class="contact-form">
+
+            {{ include('reservation/_form.html.twig') }}
+
+
+    </div>
+{% endblock %}
+    {% block js %}
+        <script>
+            window.onload=()=>{
+                let calendarElt = document.querySelector("#calendrier")
+                let calendar= new FullCalendar.Calendar(calendarElt,{
+                    initialView: 'dayGridMonth',
+                    locale:'fr',
+                    headerToolbar:{
+                        start:'dayGridMonth,timeGridWeek',
+                        center:'title',
+                        end:'prev,next today'
+                    }
+
+                    {#events: /*{{ data | raw }}  #}
+                })
+                calendar.render()
+            }
+        </script>
+    {% endblock %}

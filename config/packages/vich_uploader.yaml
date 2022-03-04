@@ -1,0 +1,10 @@
+vich_uploader:
+  db_driver: orm
+
+  mappings:
+      terrain_directory:
+        uri_prefix: '%app.path.terrain_directory%'
+        upload_destination: '%kernel.project_dir%/public%app.path.terrain_directory%'
+        namer: 'Vich\UploaderBundle\Naming\UniqidNamer'
+        delete_on_remove: true
+        delete_on_update: true

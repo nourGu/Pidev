@@ -1,0 +1,73 @@
+{% extends 'back.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}New Terrain{% endblock %}
+{% block navlink%}
+    Gestion
+{% endblock %}
+{% block navItem%}
+    <a href="{{ path('terrain_index') }}">gestion des terrains</a>
+    <a href="{{ path('type_index') }}">gestion des types</a>
+{% endblock %}
+
+
+{% block cardDel %}
+{% endblock %}
+
+ {% block charts %}
+ {% endblock %}
+
+{% block data %}
+    Table Terrain
+{% endblock %}
+
+{% block row %}
+{% endblock %}
+
+{% block table %}
+    <h1>Create new Terrain</h1>
+
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+    <label>Phone number</label>
+    <br>
+    {{ form_widget(form.numTel)}}
+    {{ form_errors(form.numTel) }}
+
+    <label>localisation</label>
+    <br>
+    {{ form_widget(form.localisation) }}
+    {{ form_errors(form.localisation) }}
+
+    <label>description</label>
+    <br>
+    {{ form_widget(form.description) }}
+    {{ form_errors(form.description) }}
+
+    <label>status</label>
+    <br>
+    {{ form_widget(form.status) }}
+    {{ form_errors(form.status) }}
+
+    <label>type</label>
+    <br>
+
+        {{ form_widget(form.type) }}
+        {{ form_errors(form.type) }}
+
+     <label>prix</label>
+     <br>
+     {{ form_widget(form.prix) }}
+     {{ form_errors(form.prix) }}
+
+    <label>downolad image</label>
+    <br>
+    {{ form_widget(form.imageFile) }}
+    {{ form_errors(form.imageFile) }}
+<br>
+    {{ include('terrain/_form.html.twig') }}
+
+{% block href %}
+    <a href="{{ path('terrain_index') }}">back to list</a>
+{% endblock %}
+
+{% endblock %}

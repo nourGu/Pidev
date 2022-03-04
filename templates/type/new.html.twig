@@ -1,0 +1,44 @@
+{% extends 'back.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}New Type{% endblock %}
+{% block navlink%}
+    Gestion
+{% endblock %}
+{% block navItem%}
+    <a href="{{ path('terrain_index') }}">gestion des terrains</a>
+    <a href="{{ path('type_index') }}">gestion des types</a>
+{% endblock %}
+
+
+{% block title2 %}
+    gestion des types de terrains
+{% endblock %}
+{% block row %}
+{% endblock %}
+
+{% block cardDel %}
+{% endblock %}
+
+ {% block charts %}
+ {% endblock %}
+{% block data %}
+    Table Type
+{% endblock %}
+{% block table %}
+<h1>Ajouter un Type</h1>
+{{ form_start( form,{'attr':{'novalidate':'novalidate' } } ) }}
+<table>
+    <tr>
+        <td>{{ form_label(form.libelleType,'libelleType') }}</td>
+        <td>{{ form_widget(form.libelleType) }}</td>
+        <td>{{ form_errors(form.libelleType) }}</td>
+    </tr>
+    {{ form_widget(form) }}
+    {{ include('type/_form.html.twig') }}
+</table>
+
+    <a href="{{ path('type_index') }}">back to list</a>
+
+{{ form_end(form) }}
+{% endblock %}

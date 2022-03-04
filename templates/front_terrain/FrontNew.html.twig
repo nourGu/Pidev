@@ -1,0 +1,105 @@
+{% extends '/ajoutFrSh.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+ {% block form %}
+ {% endblock %}
+{% block navigationBar %}
+{% endblock %}
+{% block header %}
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">Terrain</h1>
+        <div class="d-inline-flex">
+            <p class="m-0"><a href="">Home</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0">Terrain</p>
+        </div>
+    </div>
+{% endblock %}
+{% block herfTerrain %}
+    <div class="dropdown-menu rounded-0 m-0">
+        <a href="{{ path('terrain_list') }}" class="dropdown-item">Terrain</a>
+        <a href="{{ path('terrain_index') }}" class="dropdown-item">Events</a>
+    </div>
+{% endblock %}
+
+{% block payment%}
+{% endblock %}
+
+{% block createAccount %}
+{% endblock %}
+
+{% block shipping %}
+{% endblock %}
+
+{% block newterrain %}
+    <div class="text-center mb-4">
+        <h2 class="section-title px-5"><span class="px-2">Add new terrain here!</span></h2>
+    </div>
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+    {% block label1 %}
+        <label>Phone number</label>
+        <br>
+        {{ form_widget(form.numTel)}}
+        {{ form_errors(form.numTel) }}
+    {% endblock %}
+
+    {% block localisation %}
+        <label>localisation</label>
+        <br>
+        {{ form_widget(form.localisation) }}
+        {{ form_errors(form.localisation) }}
+
+    {% endblock %}
+    {% block description %}
+        <label>description</label>
+        <br>
+        {{ form_widget(form.description) }}
+        {{ form_errors(form.description) }}
+
+    {% endblock %}
+
+    {% block status %}
+        <label>status</label>
+        <br>
+        {{ form_widget(form.status) }}
+        {{ form_errors(form.status) }}
+    {% endblock %}
+
+    {% block type %}
+        <label>type</label>
+        <br>
+        {% block selection %}
+            {{ form_widget(form.type) }}
+            {{ form_errors(form.type) }}
+        {% endblock %}
+    {% endblock %}
+
+    {% block prix %}
+        <label>prix</label>
+        <br>
+        {{ form_widget(form.prix) }}
+        {{ form_errors(form.prix) }}
+    {% endblock %}
+    {% block image %}
+        <label>downolad image</label>
+        <br>
+        {{ form_widget(form.imageFile) }}
+        {{ form_errors(form.imageFile) }}
+    {% endblock %}
+    {% block backToList %}
+        To go back to the list <a href="{{ path('terrainFront_index') }}" target="_blank">click here!</a>
+    {% endblock %}
+    {% block submit %}
+        {{ include('front_terrain/_form.html.twig') }}
+    {% endblock %}
+
+
+    {% block imageFront %}
+        <img class="img-fluid" src="/front/img/imageSport.jpg" alt="">
+    {% endblock %}
+
+    {{ form_end(form) }}
+{% endblock %}

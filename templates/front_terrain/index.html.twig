@@ -1,0 +1,18 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Hello FrontTerrainController!{% endblock %}
+{% block navigationBar %}
+{% endblock %}
+ {% block prod %}
+ {% endblock %}
+{% block prod2 %}
+{% endblock %}
+{% block prod3 %}
+{% endblock %}
+
+{% block herfTerrain %}
+    <div class="dropdown-menu rounded-0 m-0">
+        <a href="{{ path('terrain_list') }}" class="dropdown-item">Terrain</a>
+        <a href="{{ path('terrain_index') }}" class="dropdown-item">Events</a>
+    </div>
+{% endblock %}

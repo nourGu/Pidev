@@ -1,0 +1,49 @@
+{% extends 'FrontIndex.html.twig' %}
+{% block title %}Hello FrontTerrainController!{% endblock %}
+
+ {% block rest %}
+ {% endblock %}
+{% block size %}
+{% endblock %}
+{% block navigationBar %}
+{% endblock %}
+
+{% block herfTerrain %}
+    <div class="dropdown-menu rounded-0 m-0">
+        <a href="{{ path('terrain_list') }}" class="dropdown-item">Terrain</a>
+        <a href="{{ path('terrain_list') }}" class="dropdown-item">Events</a>
+    </div>
+{% endblock %}
+  {% block add %}
+      <div class="col-md-6 form-group">
+          <button class="btn btn-primary py-2 px-4" type="button">
+              <a href="{{ path('terrain_add') }}" class="dropdown-item">Add yours</a>
+          </button>
+      </div>
+  {% endblock %}
+{% block body %}
+
+{% for terrain in terrains %}
+    {% block imageProd%}
+        <img src="{{ vich_uploader_asset(terrain, 'imageFile') }}" >    {% endblock %}
+
+    {% block infoProd%}
+        <h6 class="text-truncate mb-3">{{ terrain.localisation }}</h6>
+        <div class="d-flex justify-content-center">
+            <h6>{{ terrain.prix }}</h6><h6 class="text-muted ml-2"><del>{{ terrain.prix }}</del></h6>
+        </div>
+    {% endblock %}
+
+    {% block lienProd %}
+        <div class="card-footer d-flex justify-content-between bg-light border">
+            <a href="{{ path('showTerrain', {'id': terrain.id}) }}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+            <a href="{{ path('appReservation_new', {'id': terrain.id}) }}" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Reserve Now</a>
+        </div>
+    {% endblock %}
+
+{% endfor %}
+
+{% endblock %}
+  {% block pagination %}
+      {{ knp_pagination_render(terrains) }}
+  {% endblock %}
