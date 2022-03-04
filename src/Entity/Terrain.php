@@ -47,6 +47,12 @@ class Terrain
     /**
      * @ORM\Column(type="string", length=12)
      * @Assert\NotBlank(message="veuillez remplir le champs num tel")
+     * @Assert\Length(
+     *      min = 8,
+     *      max = 12,
+     *      minMessage = "The phone number must be at least {{ limit }} characters long",
+     *      maxMessage = "The phone number cannot be longer than {{ limit }} characters"
+     * )
      * @Groups("terrain")
      */
     private $numTel;
@@ -73,6 +79,7 @@ class Terrain
     /**
      * @ORM\Column(type="float")
      * @Assert\NotBlank(message="veuillez entrez le prix")
+     * @Assert\Positive
      * @Groups("terrain")
      */
     private $prix;
@@ -80,6 +87,7 @@ class Terrain
     /**
      * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="terrains")
      * @Assert\NotBlank(message="veuillez entrez le type de votre terrain")
+     *
      */
     private $type;
 
