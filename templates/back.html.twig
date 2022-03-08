@@ -25,6 +25,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset("back2/assets/css/material-dashboard.css?v=3.0.0") }}" rel="stylesheet" />
+    {% block stylesheets %}
+    {% endblock %}
     <!-- end of temp2 -->
 
 </head>
@@ -108,10 +110,12 @@
                         </nav>
                     </div>
                     <div class="sb-sidenav-menu-heading">Addons</div>
-                    <a class="nav-link" href="charts.html">
+                    {% block linkChart %}
+                    <a class="nav-link" href="{{ path('statChart') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Charts
                     </a>
+                    {% endblock %}
                     <a class="nav-link" href="tables.html">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Tables
@@ -302,6 +306,8 @@
 <script src="{{ asset("back2/assets/js/core/bootstrap.min.js")}}"></script>
 <script src="{{ asset("back2/assets/js/plugins/perfect-scrollbar.min.js")}}"></script>
 <script src="{{ asset("back2/assets/js/plugins/smooth-scrollbar.min.js")}}"></script>
+{% block js %}
+{% endblock %}
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

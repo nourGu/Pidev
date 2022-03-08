@@ -113,5 +113,14 @@ class TerrainController extends AbstractController
         return $this->redirectToRoute('terrain_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    /**
+     * @Route ("/statistique", name="statChart")
+     */
+    public function stat(Terrain $terrain): Response
+    {
+        return $this->render('terrain/stats.html.twig', [
+            'terrain' => $terrain,
+        ]);
+    }
 
 }

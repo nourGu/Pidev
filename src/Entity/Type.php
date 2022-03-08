@@ -31,6 +31,11 @@ class Type
      */
     private $terrains;
 
+    /**
+     * @ORM\Column(type="string", length=7, nullable=true)
+     */
+    private $color;
+
     public function __construct()
     {
         $this->terrains = new ArrayCollection();
@@ -85,5 +90,17 @@ class Type
     public function __toString(){
         return $this->libelleType;
 
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
     }
 }

@@ -21,8 +21,22 @@ class TypeController extends AbstractController
      */
     public function index(TypeRepository $typeRepository): Response
     {
+        $types=$typeRepository->findAll();
+        $typeNom=[];
+        $typeColor=[];
+        $typeCount=[];
+        foreach ($types as $type){
+            $typeNom[]=$type->getLibelleType();
+            $typeColor[]=$type->getColor();
+            $typeCount[]=count($type->getTerrains());
+        }
+
         return $this->render('type/index.html.twig', [
-            'types' => $typeRepository->findAll(),
+            'typeNom'=>json_encode($typeNom),
+            'typeColor'=>json_encode($typeColor),
+            'typeCount'=>json_encode($typeCount),
+            'types'=>$types
+
         ]);
     }
 
