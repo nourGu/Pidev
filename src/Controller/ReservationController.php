@@ -33,6 +33,7 @@ class ReservationController extends AbstractController
      */
     public function new(Request $request, ReservationRepository $reservationRepository): Response
     {
+
         $reservation = new Reservation();
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);

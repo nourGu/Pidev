@@ -24,29 +24,22 @@ Gestion
  {% endblock %}
 
   {% block image %}
-      <img class="img-fluid" src="/front/img/foot.jpg" style="width:300px;height:300px;" alt="">
+        <img src="{{ vich_uploader_asset(terrain, 'imageFile') }}" style="width:300px;height:300px;" >
   {% endblock %}
 {% block card %}
     <h1>Terrain</h1>
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ terrain.id }}</td>
-            </tr>
-            <tr>
-                <th>ImageTerrain</th>
-                <td>{{ terrain.imageTerrain }}</td>
-            </tr>
+        <tr>
+            <th>Localisation</th>
+            <td>{{ terrain.localisation }}</td>
+        </tr>
             <tr>
                 <th>NumTel</th>
                 <td>{{ terrain.numTel }}</td>
             </tr>
-            <tr>
-                <th>Localisation</th>
-                <td>{{ terrain.localisation }}</td>
-            </tr>
+
             <tr>
                 <th>Description</th>
                 <td>{{ terrain.description }}</td>

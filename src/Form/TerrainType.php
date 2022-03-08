@@ -3,7 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Terrain;
+use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -20,7 +22,7 @@ class TerrainType extends AbstractType
             ->add('numTel',TextType::class, [
                    'label' => 'numTel',
                    'attr' => [
-                   'placeholder' => '+216 23 456 789',
+                   'placeholder' => '23 456 789',
                  ],
 
             ])
@@ -36,11 +38,8 @@ class TerrainType extends AbstractType
                        'placeholder' => 'description'
                   ],
             ])
-            ->add('status',TextType::class, [
-                'label' => 'status',
-                'attr' => [
-                    'placeholder' => 'status'
-                ],
+            ->add('status', CheckboxType::class, [
+                'required' => false,
             ])
             ->add('prix',TextType::class, [
                 'label' => 'prix',
@@ -51,7 +50,9 @@ class TerrainType extends AbstractType
             ->add('type')
             ->add('imageFile', FileType::class,[
                 'required'=>false
-            ]);
+            ])
+        ->add('latitude')
+        ->add('longitude');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

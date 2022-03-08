@@ -29,14 +29,25 @@
 
     {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
     <label>Phone number</label>
+    <span class="input-group-text">+216
+        {{ form_widget(form.numTel)}}
+        {{ form_errors(form.numTel) }}</span>
     <br>
-    {{ form_widget(form.numTel)}}
-    {{ form_errors(form.numTel) }}
+
 
     <label>localisation</label>
-    <br>
+
     {{ form_widget(form.localisation) }}
     {{ form_errors(form.localisation) }}
+        <br>
+    <label>Latitude</label>
+    <br>
+    {{ form_widget(form.latitude) }}
+    {{ form_errors(form.latitude) }}
+    <label>longitude</label>
+    <br>
+    {{ form_widget(form.longitude) }}
+    {{ form_errors(form.longitude) }}
 
     <label>description</label>
     <br>
@@ -44,15 +55,15 @@
     {{ form_errors(form.description) }}
 
     <label>status</label>
-    <br>
     {{ form_widget(form.status) }}
     {{ form_errors(form.status) }}
 
-    <label>type</label>
-    <br>
 
-        {{ form_widget(form.type) }}
-        {{ form_errors(form.type) }}
+
+
+    <label>type</label>
+    {{ form_widget(form.type) }}
+    {{ form_errors(form.type) }}
 
      <label>prix</label>
      <br>

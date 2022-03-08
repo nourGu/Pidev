@@ -49,7 +49,7 @@ class Terrain
      * @Assert\NotBlank(message="veuillez remplir le champs num tel")
      * @Assert\Length(
      *      min = 8,
-     *      max = 12,
+     *      max = 8,
      *      minMessage = "The phone number must be at least {{ limit }} characters long",
      *      maxMessage = "The phone number cannot be longer than {{ limit }} characters"
      * )
@@ -71,7 +71,7 @@ class Terrain
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="boolean")
      * @Assert\NotBlank(message="veuillez remplir le champs status")
      */
     private $status;
@@ -95,6 +95,16 @@ class Terrain
      * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="terrain")
      */
     private $reservations;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $latitude;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $longitude;
 
     public function __construct()
     {
@@ -251,6 +261,30 @@ class Terrain
                 $reservation->setTerrain(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLatitude(): ?string
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(?string $latitude): self
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?string
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(?string $longitude): self
+    {
+        $this->longitude = $longitude;
 
         return $this;
     }

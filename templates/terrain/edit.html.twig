@@ -22,7 +22,9 @@
     <h1>Edit Terrain</h1>
     {% block form %}
         {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
         {{ include('terrain/_form.html.twig', {'button_label': 'Update'}) }}
+
     {% endblock%}
 
     {{ include('terrain/_delete_form.html.twig') }}

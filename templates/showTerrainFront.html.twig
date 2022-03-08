@@ -296,6 +296,7 @@
                             <label class="custom-control-label" for="shipto"  data-toggle="collapse" data-target="#shipping-address">Ship to different address</label>
                             {% endblock %}
                             <br>
+                            {% block reservation2 %}
                             <div class="col-md-9 form-group collapse show" id="shipping-address">
                                 <h5 class="font-weight-semi-bold mb-4">reserve here</h5>
                                 <div class="row">
@@ -362,6 +363,7 @@
                                     {% endblock %}
                                     {% endblock %}
                                 </div>
+                                {% endblock %}
                             </div>
                         </div>
                 </div>
@@ -548,7 +550,7 @@
 <!-- Products Start -->
 <div class="container-fluid py-5">
     <div class="text-center mb-4">
-        <h2 class="section-title px-5"><span class="px-2">You May Also Like</span></h2>
+        <h2 class="section-title px-5"><span class="px-2">Check the localisation</span></h2>
     </div>
     <div class="row pb-3">
         <div class="col">

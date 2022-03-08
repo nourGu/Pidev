@@ -6,8 +6,8 @@
  {% block stylesheets %}
      <style>
      #calendrier{
-     width: 500%;
-     margin: 10px
+         width:100%;
+         height:400px;
      }
      </style>
  {% endblock %}
@@ -26,6 +26,28 @@
 
     </div>
 {% endblock %}
+
+{% block map %}
+    <div id="map"></div>
+
+    <script>
+        function initMap() {
+            const myLatLng = { lat: -25.363, lng: 131.044 };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 5,
+                center: myLatLng,
+            });
+
+            new google.maps.Marker({
+                position: myLatLng,
+                map,
+                title: {{ terrain.localisation }},
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG3gJy5O7b4Oo2lcv5S_YbZXiPLbtUWME&callback=initMap&v=weekly" async defer></script>
+{% endblock%}
+
     {% block js %}
         <script>
             window.onload=()=>{
@@ -42,6 +64,20 @@
                     {#events: /*{{ data | raw }}  #}
                 })
                 calendar.render()
+            }
+
+            function initMap() {
+                const myLatLng = { lat: -25.363, lng: 131.044 };
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 4,
+                    center: myLatLng,
+                });
+
+                new google.maps.Marker({
+                    position: myLatLng,
+                    map,
+                    title: "Hello World!",
+                });
             }
         </script>
     {% endblock %}

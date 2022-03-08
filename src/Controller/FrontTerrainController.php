@@ -35,7 +35,11 @@ class FrontTerrainController extends AbstractController
      */
     public function listTerrain( Request $request,PaginatorInterface $paginator,TerrainRepository $terrainRepository): Response
     {
-        $donness=$terrainRepository->findAll();
+        $donness=$terrainRepository->findBy(
+            array(
+                'status'=>'1'
+            )
+        );
         $terrians=$paginator->paginate(
             $donness,
             $request->query->getInt('page',1),
