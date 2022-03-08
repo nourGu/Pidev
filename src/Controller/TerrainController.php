@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Terrain;
 use App\Form\TerrainType;
 use App\Repository\TerrainRepository;
+use App\Repository\TypeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,7 +22,7 @@ class TerrainController extends AbstractController
     /**
      * @Route("/", name="terrain_index", methods={"GET"})
      */
-    public function index(Request $request,PaginatorInterface $paginator,TerrainRepository $terrainRepository, SerializerInterface $serializer): Response
+    public function index(Request $request,PaginatorInterface $paginator,TerrainRepository $terrainRepository, SerializerInterface $serializer, TypeRepository $typeRepository): Response
     {
         $donness=$terrainRepository->findAll();
         $terrians=$paginator->paginate(
@@ -29,12 +30,23 @@ class TerrainController extends AbstractController
             $request->query->getInt('page',1),
             4
         );
+        $terain=$terrainRepository->countByDate();
+        $dates=[];
+        $terrainCount=[];
+        foreach ($terain as $terain ){
+            $dates[]=$terain['dateCreation'];
+            $terrainCount[]=$terain['count'];
+
+        }
       /* $terrains= $terrainRepository->findAll();
        $json=$serializer->serialize($terrains,'json',['groups'=>'terrain']);
        dump($json);
        die;*/
           return $this->render('terrain/index.html.twig', [
            'terrains' => $terrians,
+              'dates'=>json_encode($dates),
+              'terrainCount'=>json_encode($terrainCount)
+
         ]);
 
     }

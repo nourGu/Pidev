@@ -92,6 +92,7 @@
 {% endblock %}
 {% block charts %}
     <canvas id="types" width="200" height="100"></canvas>
+    {{ dump() }}
 {% endblock %}
 {% block js %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
@@ -100,15 +101,13 @@
     <script>
         let types = document.querySelector("#types")
         let typeGraph = new Chart(types,{
-            type:"pie",
-            data:{
-                labels:["cat1","cat2","cat3"],
+            type:"bar",
+            data: {
+                labels: {{ dates|raw }},
                 datasets: [{
-                    label: '# of Votes',
-                    data: [2,5,3],
-                    backgroundColor: ["gray","purple","blue"]
-                }
-                ]
+                    label: "nombre de terrains",
+                    data:{{ terrainCount|raw }}
+                }]
             }
         })
     </script>
