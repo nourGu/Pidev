@@ -90,9 +90,20 @@
     {{ knp_pagination_render(terrains) }}
 {% endblock %}
 {% endblock %}
-{% block charts %}
-    <canvas id="types" width="200" height="100"></canvas>
-    {{ dump() }}
+{% block globchart %}
+    <div class="col-xl-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-chart-area me-1"></i>
+                Area Chart Example
+            </div>
+            <div class="card-body">
+                {% block charts1 %}
+                <canvas id="types" width="200" height="100"></canvas>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
 {% block js %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
@@ -106,7 +117,8 @@
                 labels: {{ dates|raw }},
                 datasets: [{
                     label: "nombre de terrains",
-                    data:{{ terrainCount|raw }}
+                    data:{{ terrainCount|raw }},
+                    backgroundColor:["#bd6b6b","#c9b1a6","#c9b5a6"]
                 }]
             }
         })
