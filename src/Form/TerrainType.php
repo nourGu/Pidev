@@ -40,6 +40,7 @@ class TerrainType extends AbstractType
             ])
             ->add('status', CheckboxType::class, [
                 'required' => false,
+                'label' => 'disponible',
             ])
             ->add('prix',TextType::class, [
                 'label' => 'prix',

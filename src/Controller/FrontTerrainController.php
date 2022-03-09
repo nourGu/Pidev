@@ -59,12 +59,12 @@ class FrontTerrainController extends AbstractController
         $form = $this->createForm(TerrainType::class, $terrain);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            dd($request);
+
 
             $entityManager->persist($terrain);
             $entityManager->flush();
 
-            return $this->redirectToRoute('terrainFront_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('terrain_list', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('front_terrain/FrontNew.html.twig', [
@@ -82,8 +82,8 @@ class FrontTerrainController extends AbstractController
           $terrainLong=$terrain->getLongitude();
         return $this->render('front_terrain/show.html.twig', [
             'terrain' => $terrain,
-            'terrainLat'=>$terrainLat,
-            'terrainLong'=>$terrainLong,
+            'terrainLat'=>json_encode($terrainLat),
+            'terrainLong'=>json_encode($terrainLong),
         ]);
     }
 

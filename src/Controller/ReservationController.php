@@ -40,7 +40,7 @@ class ReservationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $reservationRepository->add($reservation);
-            return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('appReservation_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('reservation/show.html.twig', [
@@ -51,11 +51,12 @@ class ReservationController extends AbstractController
     /**
      * @Route("/{id}", name="showTerrainByEvent", methods={"GET"})
      */
-    public function showResByTerrain(Terrain $terrain , ReservationRepository $reservationRepository,$id): Response
+    public function showAll( ReservationRepository $reservationRepository): Response
     {
+        $reservation = $reservationRepository->findAll();
 
-        return $this->render('reservation/show.html.twig', [
-                'terrain' => $terrain]
+        return $this->render('reservation/showBack.html.twig', [
+                'reservation' => $reservation]
         );
     }
 

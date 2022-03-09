@@ -82,8 +82,10 @@
                 var long = '{{ terrainLong }}'
                 var latit = '{{ terrainLat }}'
                console.log(long)
+               console.log(latit)
+
                 // The location of Uluru
-                const uluru = { lat: {{ terrainLong }}, lng: {{ terrainLat }} };
+                const uluru = { lat: 36.858898, lng: 10.196500 };
                 // The map, centered at Uluru
                 const map = new google.maps.Map(document.getElementById("map"), {
                     zoom: 4,

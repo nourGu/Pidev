@@ -1,8 +1,25 @@
-{% extends 'base.html.twig' %}
+{% extends 'back.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
-{% block title %}Edit Reservation{% endblock %}
+{% block title %}Edit Terrain{% endblock %}
+{% block navlink%}
+    Gestion
+{% endblock %}
+{% block navItem%}
+    <a href="{{ path('terrain_index') }}">gestion des terrains</a>
+    <a href="{{ path('type_index') }}">gestion des types</a>
+    <a href="{{ path('app_reservation_index') }}">gestion reservations</a>
+{% endblock %}
 
-{% block body %}
+{% block row %}
+{% endblock %}
+
+ {% block globchart %}
+ {% endblock %}
+{% block cardDel %}
+{% endblock %}
+
+{% block table %}
     <h1>Edit Reservation</h1>
 
     {{ include('reservation/_form.html.twig', {'button_label': 'Update'}) }}
