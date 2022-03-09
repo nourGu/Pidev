@@ -106,6 +106,14 @@ class Terrain
      */
     private $longitude;
 
+    /**
+     * @Vich\UploadableField(mapping="terrain_Localisation", fileNameProperty="imageLocalisation")
+     * @var File
+     */
+    private $imageLocalisation;
+
+
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
@@ -183,16 +191,20 @@ class Terrain
         return $this;
     }
 
-    public function getStatus(): ?string
+    /**
+     * @return mixed
+     */
+    public function getStatus()
     {
         return $this->status;
     }
 
-    public function setStatus(string $status): self
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status): void
     {
         $this->status = $status;
-
-        return $this;
     }
 
     public function getPrix(): ?float
@@ -286,6 +298,24 @@ class Terrain
     {
         $this->longitude = $longitude;
 
+        return $this;
+    }
+
+    public function getImageLocalisation(): ?string
+    {
+        return $this->imageLocalisation;
+    }
+
+    public function setImageLocalisation(File $imageLocalisation = null): self
+    {
+        $this->localisation = $imageLocalisation;
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($imageLocalisation) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
         return $this;
     }
 

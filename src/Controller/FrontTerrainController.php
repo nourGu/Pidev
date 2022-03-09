@@ -76,11 +76,14 @@ class FrontTerrainController extends AbstractController
     /**
      * @Route("/{id}", name="showTerrain", methods={"GET"})
      */
-    public function show(Terrain $terrain): Response
+    public function show(Terrain $terrain,TerrainRepository $terrainRepository): Response
     {
-
+          $terrainLat=$terrain->getLatitude();
+          $terrainLong=$terrain->getLongitude();
         return $this->render('front_terrain/show.html.twig', [
             'terrain' => $terrain,
+            'terrainLat'=>$terrainLat,
+            'terrainLong'=>$terrainLong,
         ]);
     }
 
